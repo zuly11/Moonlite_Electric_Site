@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Roboto&display=swap');
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+:root {
+  --background: #0B147E;
+}
+
+.a {
+  cursor: pointer;
+}
+
+header {
+  height: 200px;
+  background-color: yellow;
+  width: 100%;
+}
+
+h2 {
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+  display: relative;
+}
+
+.navlist {
+  display: flex;
+  float: right;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.navlist li a {
+  font-size: 20px;
+  display: inline-block;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px 20px;
+  text-decoration: none;
+  margin-left: 3em;
+}
+
+.navlist li :hover {
+  color: green;
+}
+
+footer {
+  background: black;
+  height: 250px;
+  color: white;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+#menuToggle {
+  position: absolute;
+  display: block;
+  display: none;
+  left: 85%;
+}
+
+#menuToggle a {
+  text-decoration: none;
+  color: #232323;
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover {
+  color: tomato;
+}
+
+#menuToggle input {
+  display: block;
+  width: 30px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0;
+  /* hide this */
+  z-index: 2;
+  /* and place it over the hamburger */
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: black;
+  border-radius: 3px;
+  z-index: 1;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+    opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+/*
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked~span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked~span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked~span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu {
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  height: 200px;
+  width: 145px;
+  right: 375px;
+  overflow-x: hidden;
+  margin-top: 48px;
+  padding: 35px;
+  z-index: 999;
+  background: yellow;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  transform-origin: 0% 0%;
+  transform: translate(-175%, 0);
+  transition: transform 0.8s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  opacity: 0.9;
+}
+
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked~ul {
+  transform: none;
+}
+
+/* side menu styles */
+@media screen and (max-width: 765px) {
+  header {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .nav-ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #menuToggle {
+    display: contents;
+    position: absolute;
+    display: block;
+    right: 10%;
+  }
+
+  .nav-ul li a {
+    padding: 10px;
+  }
+}
